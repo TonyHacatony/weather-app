@@ -34,7 +34,7 @@ const toString = (reqParams: RequestObj): string => {
 }
 
 const findWeather = (reqParams: RequestObj, days = 3) => {
-  const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${toString(reqParams)}&days=${days}&aqi=no&alerts=no`;
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${toString(reqParams)}&days=${days}&aqi=no&alerts=no`;
   return madeRequest(url);
 }
 
