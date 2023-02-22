@@ -42,7 +42,6 @@ const madeRequest = async (url: string): Promise<AxiosResponse<ForecastGetRespon
   return axios.get<ForecastGetResponse>(url)
     .catch((axios) => {
       console.log('api call error');
-      console.log(axios);
       return axios;
     });
 }
