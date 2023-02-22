@@ -1,0 +1,419 @@
+//size
+$top_height: 60vh;
+$bot_height: 40vh;
+$footer_height: 50px;
+$footer_height_vertical: 100px;
+
+$layout_margin: 32px;
+$small_layout_margin: 16px;
+
+$head_margin: 16px;
+$mid_head_margin: 8px;
+$small_head_margin: 4px;
+
+//skeleton
+$sk_row: 250px;
+$sk_title: 120px;
+$sk_title_temp: 80px;
+$sk_btn_row: 50px;
+
+$sk_mid_row: 180px;
+$sk_mid_title: 60px;
+$sk_mid_title_temp: 40px;
+$sk_mid_btn_row: 25px;
+
+//font
+//big
+$large_head_font_size: 32px;
+$large_font_size: 20px;
+$large_footer_font_size: 18px;
+//mid
+$mid_head_font_size: 26px;
+$mid_font_size: 16px;
+$mid_footer_font_size: 14px;
+
+//colour
+$app_background_colour: rgb(70, 102, 255);
+$app_background_colour_hover: rgb(240, 201, 147);
+$card_background_colour: white;
+
+//other
+$default_border_size: 1px;
+$default_border: $default_border_size solid gray;
+$box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+$main_content_size: calc(100vh - (2 * $footer_height) - (2 * $layout_margin) - (2 * $default_border_size));
+$default_border_shape: 15px;
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Varela Round', sans-serif;
+  display: flex;
+  align-items: stretch;
+  background-color: $app_background_colour;
+}
+
+#___gatsby {
+  height: 100%;
+  width: 100%;
+}
+
+a,
+u {
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  border-bottom: $default_border;
+}
+
+footer {
+  text-align: center;
+  border-top: $default_border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header,
+footer {
+  height: $footer_height;
+  background-color: $card_background_colour;
+  box-shadow: $box_shadow;
+}
+
+span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: start;
+}
+
+.card-layout {
+  border: $default_border;
+  background-color: $card_background_colour;
+  border-radius: $default_border_shape;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: $box_shadow;
+}
+
+@mixin fonts-setup($map) {
+  body {
+    font-size: map-get($map, 'font_size');
+  }
+
+  .value {
+    font-size: map-get($map, 'head_font_size');
+  }
+
+  .head {
+    font-size: map-get($map, 'head_font_size');
+  }
+
+  footer {
+    font-size: map-get($map, 'footer_font_size');
+  }
+}
+
+@include fonts-setup((font_size: $large_font_size,
+    head_font_size: $large_head_font_size,
+    footer_font_size: $large_footer_font_size ));
+
+// Other
+
+span {
+  margin: 2px;
+}
+
+main {
+  margin: $layout_margin;
+  display: flex;
+  height: $main_content_size;
+}
+
+// today info
+
+.today-info {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hours {
+  display: flex;
+  flex-direction: row;
+}
+
+.today {
+  width: 50%;
+}
+
+//cards
+
+.forecast-cards {
+  width: 50%;
+}
+
+.day-card {
+  margin-left: $layout_margin;
+  height: calc(($main_content_size / 2) - ($layout_margin / 2) - 2px);
+}
+
+.forecast-cards .day-card:first-child {
+  margin-bottom: $layout_margin;
+}
+
+.forecast-cards .day-card:last-child {
+  margin-top: $layout_margin;
+}
+
+//card
+
+.head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.head>* {
+  margin: $head_margin;
+}
+
+.today-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.body {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.body-column {
+  margin: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+//hours
+
+.forecast {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hours-cards {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  overflow-x: auto;
+}
+
+.hour-card {
+  margin: .5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: $default_border;
+  border-radius: $default_border_shape;
+}
+
+.hour-card:hover,
+.selected {
+  background-color: $app_background_colour_hover;
+}
+
+//skeleton
+
+@mixin skeleton-setup($map) {
+  .skeleton-text {
+    height: map-get($map, 'font_size');
+  }
+
+  .skeleton-head {
+    height: map-get($map, 'head_font_size');
+  }
+
+  .skeleton-row {
+    width: map-get($map, 'row_width');
+  }
+
+  .skeleton-title {
+    width: map-get($map, 'title_width');
+  }
+
+  .skeleton-title-temp {
+    width: map-get($map, 'title_temp_width');
+  }
+
+  .skeleton-btn-row {
+    width: map-get($map, 'btn_row_width');
+  }
+}
+
+@include skeleton-setup((font_size: $large_font_size,
+    head_font_size: $large_head_font_size,
+    row_width: $sk_row,
+    title_width: $sk_title,
+    title_temp_width: $sk_title_temp,
+    btn_row_width: $sk_btn_row ));
+
+.skeleton {
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 70%);
+  }
+
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+.disable-hover:hover {
+  background: none;
+}
+
+//queries
+
+@media screen and (max-width: 1350px) {
+  @include fonts-setup((font_size: $mid_font_size,
+      head_font_size: $mid_head_font_size,
+      footer_font_size: $mid_footer_font_size ));
+
+  @include skeleton-setup((font_size: $mid_font_size,
+      head_font_size: $mid_head_font_size,
+      row_width: $sk_mid_row,
+      title_width: $sk_mid_title,
+      title_temp_width: $sk_mid_title_temp,
+      btn_row_width: $sk_mid_btn_row ));
+}
+
+@media screen and (max-width: 1100px) {
+  main {
+    flex-direction: column;
+    height: auto;
+    margin: 0px;
+  }
+
+  main>* {
+    flex: 1;
+  }
+
+  .head>* {
+    margin: $mid_head_margin;
+  }
+
+  .today {
+    width: calc(100% - ($small_layout_margin * 2));
+    margin: $small_layout_margin;
+    height: auto;
+  }
+
+  .forecast-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: calc(100% - ($small_layout_margin * 2));
+    margin: $small_layout_margin;
+    margin-top: 0;
+    height: auto;
+  }
+
+  .day-card {
+    margin-bottom: 0px;
+    width: calc(50%);
+    margin: 0;
+    height: auto;
+  }
+
+  .forecast-cards .day-card:first-child {
+    margin-right: $small_layout_margin;
+    margin-bottom: 0;
+  }
+
+  .forecast-cards .day-card:last-child {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .day-card>.body {
+    flex-direction: column;
+  }
+
+  .day-card>.head {
+    flex-direction: column;
+  }
+
+  .day-card {
+    width: 100%;
+    flex: 1;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    height: $footer_height_vertical;
+  }
+
+  header>* {
+    flex: 1;
+    margin: 4px;
+  }
+  
+  #header-title {
+    width: calc(100%);
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .head>* {
+    margin: $small_head_margin;
+  }
+
+  .body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .body-column {
+    width: calc(80%);
+  }
+
+  .forecast-cards {
+    flex-direction: column;
+  }
+
+  .forecast-cards .day-card:first-child {
+    margin-bottom: $small_layout_margin;
+    margin-right: 0;
+  }
+
+  .forecast-cards .day-card:last-child {
+    margin-top: 0;
+  }
+}
