@@ -8,6 +8,7 @@ What new points I learned from this project.
 - Work with 3rd parties APIs.
 - CSS: ‘scss’, more media queries, mixins.
 - More difficult ‘React’ project structure.
+- More about typescript.
 - A new way to build a project - ‘gatsby’.
 
 Live link: https://weather-app-nu-ebon.vercel.app
